@@ -19,4 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // GitHub Webhook Route (sesuai dengan URL dari CyberPanel)
-Route::post('websites/yhoitech.my.id/webhook', [App\Http\Controllers\WebhookController::class, 'handleGithubWebhook']);
+Route::post('https://195.88.211.104:8090/websites/yhotech.my.id/webhook', [App\Http\Controllers\WebhookController::class, 'handleGithubWebhook']);
