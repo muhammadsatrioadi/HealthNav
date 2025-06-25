@@ -313,7 +313,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-6">
-                <h1 class="display-4 mb-4">Welcome back, {{ Auth::user()->name }}!</h1>
+                <h1 class="display-4 mb-4">Welcome back, {{ Auth::user()->name }}!!!</h1>
                 <p class="lead mb-4">Manage your medical check-ups and appointments all in one place.</p>
                 <a href="{{ route('hospitals.selection') }}" class="btn btn-light btn-lg">Book New Appointment</a>
             </div>
