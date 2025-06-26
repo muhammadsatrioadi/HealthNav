@@ -9,6 +9,7 @@ class WebhookController extends Controller
 {
     public function handleGithubWebhook(Request $request)
     {
+        Log::info('GitHub Webhook Reached Controller:', $request->all());
         Log::info('GitHub Webhook Received:', $request->all());
 
         // TODO: Tambahkan logika validasi signature GitHub di sini
