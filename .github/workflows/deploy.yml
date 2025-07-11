@@ -1,0 +1,52 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2' # Sesuaikan dengan versi PHP aplikasi Laravel Anda
+        extensions: mbstring, pdo_mysql, bcmath # Tambahkan ekstensi PHP yang dibutuhkan
+        ini-values: post_max_size=256M, upload_max_filesize=256M
+        tools: composer, npm
+
+    - name: Install Composer dependencies
+      run: composer install --no-dev --prefer-dist --optimize-autoloader
+
+    - name: Install NPM dependencies
+      run: npm install
+
+    - name: Build frontend assets
+      run: npm run prod # Atau npm run dev jika Anda membutuhkan aset yang tidak diminifikasi
+
+    - name: Run migrations
+      run: php artisan migrate --force # --force diperlukan untuk lingkungan produksi
+
+    - name: Clear and optimize Laravel caches
+      run: |
+        php artisan config:clear
+        php artisan cache:clear
+        php artisan route:clear
+        php artisan view:clear
+        php artisan optimize
+
+    # - name: Run tests (optional)
+    #   run: vendor/bin/phpunit # Hapus komentar dan konfigurasikan jika Anda memiliki tes otomatis
+
+    - name: Deploy application (contoh - sesuaikan sesuai kebutuhan Anda)
+      run: |
+        # Contoh: restart web server, reload FPM, dll.
+        sudo systemctl restart nginx
+        sudo systemctl reload php8.2-fpm # Sesuaikan dengan versi PHP-FPM yang Anda gunakan
+        echo "Deployment selesai di self-hosted runner." 

@@ -15,11 +15,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- CSS Libraries -->
-  <link rel="stylesheet" href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/plugins/icofont/icofont.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/plugins/slick-carousel/slick/slick.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/plugins/slick-carousel/slick/slick-theme.css') }}">
-  <link rel="stylesheet" href="{{ asset('assets/plugins/animate/animate.min.css') }}">
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
@@ -35,7 +33,6 @@
       box-shadow: none;
       border-bottom: 1px solid #e5e7eb;
       padding: 0.5rem 0;
-      height: 60px;
     }
     
     .navbar.scrolled {
@@ -250,141 +247,211 @@
     }
 
     .navbar .user-profile {
-      width: 32px;
-      height: 32px;
+      width: 35px;
+      height: 35px;
       border-radius: 50%;
       overflow: hidden;
-      flex-shrink: 0;
     }
 
-    .navbar .user-profile img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    /* Chatbot Styles */
+    .chatbot-container {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 1000;
     }
 
-    .navbar .user-name {
-      font-size: 0.9rem;
-      color: #111827;
-      font-weight: 500;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 150px;
+    .chatbot-toggle-btn {
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        font-size: 1.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+        cursor: pointer;
+        transition: all 0.3s ease;
     }
 
-    .navbar .dropdown-toggle {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 0;
-      border: none;
-      background: none;
+    .chatbot-toggle-btn:hover {
+        background: #0056b3;
+        box-shadow: 0 6px 12px rgba(0, 123, 255, 0.4);
+        transform: translateY(-2px);
     }
 
-    .navbar .dropdown-toggle::after {
-      margin-left: auto;
-      color: #6b7280;
-      border-top: 0.3em solid;
-    }
-
-    .navbar .dropdown-menu {
-      margin-top: 0.5rem;
-      border: 1px solid #e5e7eb;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      border-radius: 6px;
-      min-width: 200px;
-      padding: 0.5rem;
-      transform: translateY(10px);
-      right: 0;
-      left: auto;
-    }
-
-    .navbar .dropdown-item {
-      padding: 0.625rem 1rem;
-      color: #4b5563;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      border-radius: 4px;
-    }
-
-    .navbar .dropdown-item i {
-      margin-right: 0.75rem;
-      width: 16px;
-      color: #6b7280;
-    }
-
-    .navbar .dropdown-item:hover {
-      background: #f3f4f6;
-      color: #111827;
-    }
-
-    .navbar .dropdown-item:active {
-      background: #f3f4f6;
-      color: #111827;
-    }
-
-    .navbar .dropdown-divider {
-      margin: 0.5rem 0;
-      border-color: #e5e7eb;
-    }
-
-    /* Preloader */
-    #preloader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: #ffffff;
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.5s ease;
-    }
-
-    #preloader.fade-out {
-      opacity: 0;
-    }
-
-    .loader {
-      position: relative;
-      width: 60px;
-      height: 60px;
-    }
-
-    .loader:before,
-    .loader:after {
-      content: '';
-      position: absolute;
-      border-radius: 50%;
-      animation: pulse 1.8s ease-in-out infinite;
-    }
-
-    .loader:before {
-      width: 100%;
-      height: 100%;
-      background: rgba(38, 53, 93, 0.5);
-      animation-delay: -0.9s;
-    }
-
-    .loader:after {
-      width: 100%;
-      height: 100%;
-      background: rgba(74, 144, 226, 0.5);
-      animation-delay: 0s;
-    }
-
-    @keyframes pulse {
-      0% {
-        transform: scale(0);
-        opacity: 1;
-      }
-      100% {
-        transform: scale(1);
+    .chatbot-window {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        width: 350px;
+        height: 450px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        position: absolute;
+        bottom: 80px; /* Above the toggle button */
+        right: 0;
         opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .chatbot-window.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .chatbot-header {
+        background: #007bff;
+        color: white;
+        padding: 1rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .chatbot-header .close-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+
+    .chatbot-messages {
+        flex-grow: 1;
+        padding: 1rem;
+        overflow-y: auto;
+        background: #f8f9fa;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .chat-message {
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        margin-bottom: 0.75rem;
+        max-width: 85%;
+        word-wrap: break-word;
+        display: inline-block;
+        clear: both;
+    }
+
+    .chat-message.user {
+        background: #e9f7ff;
+        color: #0056b3;
+        align-self: flex-end;
+        margin-left: auto;
+        border-bottom-right-radius: 2px;
+        text-align: right;
+    }
+
+    .chat-message.bot {
+        background: #f0f0f0;
+        color: #333;
+        align-self: flex-start;
+        margin-right: auto;
+        border-bottom-left-radius: 2px;
+        text-align: left;
+    }
+
+    .chatbot-input-area {
+        display: flex;
+        padding: 1rem;
+        border-top: 1px solid #eee;
+        background: #fff;
+    }
+
+    .chatbot-input-area input {
+        flex-grow: 1;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        padding: 0.75rem 1rem;
+        font-size: 0.95rem;
+        margin-right: 0.5rem;
+    }
+
+    .chatbot-input-area button {
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 0.75rem 1rem;
+        cursor: pointer;
+        transition: background 0.2s ease;
+    }
+
+    .chatbot-input-area button:hover {
+        background: #0056b3;
+    }
+
+    @media (max-width: 991.98px) { /* For Bootstrap's lg breakpoint */
+      .navbar-collapse.show.mobile-nav-override {
+        background-color: #ffffff !important; /* Ensure solid background */
+        position: fixed !important; /* Position fixed relative to viewport */
+        top: 60px !important; /* Position below fixed navbar, adjust if navbar height changes */
+        left: 0 !important;
+        width: 100% !important;
+        height: calc(100vh - 60px) !important; /* Take full viewport height minus navbar height */
+        padding: 1rem !important; /* Add some padding for better look */
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+        z-index: 1039 !important; /* Ensure it's above other content */
+        overflow-y: auto !important; /* Allow scrolling if content is long */
+      }
+
+      .mobile-nav-override .navbar-nav {
+        flex-direction: column !important; /* Stack nav items vertically */
+        width: 100% !important;
+      }
+
+      .mobile-nav-override .nav-item {
+        width: 100% !important;
+      }
+
+      .mobile-nav-override .search-box {
+        margin-right: 0 !important;
+        margin-top: 1rem !important;
+        width: 100% !important;
+      }
+
+      .mobile-nav-override .search-input {
+        width: 100% !important;
+      }
+
+      .mobile-nav-override .ms-auto {
+        margin-left: 0 !important;
+      }
+
+      .mobile-nav-override .d-flex.align-items-center {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+      }
+
+      .mobile-nav-override .dropdown {
+        width: 100% !important;
+        margin-top: 1rem !important;
+      }
+
+      .mobile-nav-override .user-profile-dropdown {
+        width: 100% !important;
+        justify-content: space-between !important;
+      }
+
+      .mobile-nav-override .dropdown-menu {
+        position: static !important; /* Remove absolute positioning for dropdown menu in collapsed navbar */
+        width: 100% !important;
+        transform: none !important;
+        margin-top: 0.5rem !important;
       }
     }
   </style>
@@ -407,31 +474,29 @@
         <img src="{{ asset('assets/images/logo.png') }}" alt="HealthNav Logo">
         <span>HealthNav</span>
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="collapse navbar-collapse mobile-nav-override" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item">
-            @auth
-              @if(Auth::user()->is_admin)
-                <a class="nav-link" href="{{ route('admin.dashboard') }}">Home</a>
-              @else
+          @if(!Auth::check() || Auth::user()->role !== 'admin')
+            <li class="nav-item">
+              @auth
                 <a class="nav-link" href="{{ route('user.dashboard') }}">Home</a>
-              @endif
-            @else
-              <a class="nav-link" href="{{ route('main') }}">Home</a>
-            @endauth
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('hospitals.index') }}">Hospital</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('about') }}">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('contact') }}">Contact</a>
-          </li>
+              @else
+                <a class="nav-link" href="{{ route('main') }}">Home</a>
+              @endauth
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('hospitals.index') }}">Hospital</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('about') }}">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('contact') }}">Contact</a>
+            </li>
+          @endif
         </ul>
         <div class="ms-auto d-flex align-items-center">
           <div class="search-box">
@@ -560,7 +625,7 @@
         <div class="social-links">
           <a href="#"><i class="fab fa-facebook"></i></a>
           <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.instagram.com/healthnav1?igsh=MWhiaDA0YWRiZTMxbw=="><i class="fab fa-instagram"></i></a>
           <a href="#"><i class="fab fa-linkedin"></i></a>
         </div>
         <div class="mt-3">
@@ -584,18 +649,16 @@
 </a>
 
 <!-- Essential Scripts -->
-<script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/bootstrap/js/popper.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/jquery/jquery.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{{ asset('assets/plugins/slick-carousel/slick/slick.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/jquery.easing/jquery.easing.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/waypoints/jquery.waypoints.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/counterup/jquery.easing.js') }}"></script>
+<script src="{{ asset('assets/plugins/counterup/jquery.waypoints.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/counter-up/jquery.counterup.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/wow/wow.min.js') }}"></script>
 
 <!-- Google Map -->
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
-<script src="{{ asset('assets/js/map.js') }}"></script>
+<script src="{{ asset('assets/plugins/google-map/map.js') }}"></script>
 
 <!-- Custom Script -->
 <script src="{{ asset('assets/js/script.js') }}"></script>
@@ -635,5 +698,126 @@ if (window.history.replaceState) {
 </script>
 
 @stack('scripts')
+
+<!-- Chatbot HTML -->
+<div class="chatbot-container">
+  <button class="chatbot-toggle-btn" id="chatbot-toggle-btn"><i class="fas fa-comments"></i></button>
+  <div class="chatbot-window" id="chatbot-window">
+    <div class="chatbot-header">
+      <span>Chatbot</span>
+      <button class="close-btn" id="chatbot-close-btn">&times;</button>
+    </div>
+    <div class="chatbot-messages" id="chatbot-messages"></div>
+    <div class="chatbot-input-area">
+      <input type="text" id="chatbot-input" placeholder="Type your message..." autocomplete="off" />
+      <button id="chatbot-send-btn">Send</button>
+    </div>
+  </div>
+</div>
+
+<!-- Chatbot JavaScript -->
+<script>
+  $(document).ready(function() {
+    const chatbotToggleBtn = $('#chatbot-toggle-btn');
+    const chatbotWindow = $('#chatbot-window');
+    const chatbotCloseBtn = $('#chatbot-close-btn');
+    const chatbotInput = $('#chatbot-input');
+    const chatbotSendBtn = $('#chatbot-send-btn');
+    const chatbotMessages = $('#chatbot-messages');
+
+    // Focus input when chatbot opens
+    function openChatbot() {
+      chatbotWindow.addClass('active');
+      setTimeout(() => {
+        chatbotInput.focus();
+      }, 200);
+    }
+
+    chatbotToggleBtn.on('click', function() {
+      if (chatbotWindow.hasClass('active')) {
+        chatbotWindow.removeClass('active');
+      } else {
+        openChatbot();
+      }
+    });
+
+    chatbotCloseBtn.on('click', function() {
+      chatbotWindow.removeClass('active');
+    });
+
+    chatbotSendBtn.on('click', sendMessage);
+    chatbotInput.on('keypress', function(e) {
+      if (e.which === 13) {
+        sendMessage();
+      }
+    });
+
+    function sendMessage() {
+      const message = chatbotInput.val().trim();
+      if (message === '') return;
+
+      appendMessage(message, 'user');
+      chatbotInput.val('');
+      chatbotInput.focus();
+
+      // Simulate bot response (replace with AJAX for real bot)
+      setTimeout(() => {
+        appendMessage(getBotResponse(message), 'bot');
+      }, 700);
+    }
+
+    function appendMessage(message, sender) {
+      const messageElement = $('<div class="chat-message ' + sender + '"></div>');
+      if (sender === 'bot') {
+        messageElement.html(message);
+      } else {
+        messageElement.text(message);
+      }
+      chatbotMessages.append(messageElement);
+      chatbotMessages.scrollTop(chatbotMessages[0].scrollHeight);
+    }
+
+    // Define Laravel routes for use in JavaScript
+    const laravelRoutes = {
+      hospitalsSelection: "{{ route('hospitals.selection') }}",
+      mcuHistory: "{{ route('user.mcu.history') }}",
+      profileEdit: "{{ route('user.profile.edit') }}",
+      hospitalsIndex: "{{ route('hospitals.index') }}"
+    };
+
+    function getBotResponse(message) {
+      const lowerCaseMessage = message.toLowerCase();
+      for (const key in botResponses) {
+        if (lowerCaseMessage.includes(key)) {
+          return botResponses[key];
+        }
+      }
+      return botResponses['default'];
+    }
+
+    const botResponses = {
+      'halo': 'Halo! Ada yang bisa saya bantu?',
+      'bantuan': 'Tentu, apa yang ingin Anda tanyakan? Anda bisa bertanya tentang <a href="' + laravelRoutes.mcuHistory + '">riwayat MCU</a>, <a href="' + laravelRoutes.hospitalsIndex + '">daftar rumah sakit</a>, atau <a href="' + laravelRoutes.profileEdit + '">mengelola profil Anda</a>.',
+      'paket mcu': 'Kami punya paket Basic, Pro, dan Enterprise. Anda bisa <a href="' + laravelRoutes.hospitalsSelection + '">memesan MCU baru di sini</a>.',
+      'rumah sakit': 'Anda bisa melihat daftar rumah sakit mitra kami di halaman <a href="' + laravelRoutes.hospitalsIndex + '">Rumah Sakit</a>.',
+      'profil': 'Untuk mengelola profil Anda, silakan kunjungi halaman <a href="' + laravelRoutes.profileEdit + '">Profil Saya</a>.',
+      'riwayat mcu': 'Anda dapat melihat riwayat Medical Check-Up Anda di halaman <a href="' + laravelRoutes.mcuHistory + '">Riwayat MCU</a>.',
+      'terima kasih': 'Sama-sama! Senang bisa membantu.',
+      'default': 'Maaf, saya belum memahami pertanyaan Anda. Bisakah Anda bertanya dengan cara lain?'
+    };
+
+    // Initial bot message and suggested questions
+    appendMessage('Halo! Saya HealthNav Bot. Ada yang bisa saya bantu?', 'bot');
+    appendMessage('Anda bisa mencoba bertanya:' +
+                  '<ul>' +
+                  '<li>Apa saja paket MCU?</li>' +
+                  '<li>Dimana saya bisa melihat daftar rumah sakit?</li>' +
+                  '<li>Bagaimana cara mengelola profil saya?</li>' +
+                  '<li>Bagaimana cara melihat riwayat MCU?</li>' +
+                  '<li>Terima kasih</li>' +
+                  '</ul>',
+                  'bot');
+  });
+</script>
 </body>
 </html>
