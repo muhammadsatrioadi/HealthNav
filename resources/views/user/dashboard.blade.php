@@ -169,140 +169,35 @@
         vertical-align: middle;
     }
 
-    /* Chatbot Styles */
-    .chatbot-container {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        z-index: 1000;
+    /* User Profile Dropdown */
+    .navbar .user-profile-dropdown {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: white;
+      min-width: 160px;
     }
 
-    .chatbot-toggle-btn {
-        background: #007bff;
-        color: white;
-        border: none;
-        border-radius: 50%;
-        width: 60px;
-        height: 60px;
-        font-size: 1.8rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
-        cursor: pointer;
-        transition: all 0.3s ease;
+    .navbar .user-profile-dropdown:hover {
+      border-color: #d1d5db;
+      background: #f9fafb;
     }
 
-    .chatbot-toggle-btn:hover {
-        background: #0056b3;
-        box-shadow: 0 6px 12px rgba(0, 123, 255, 0.4);
-        transform: translateY(-2px);
+    .navbar .user-profile-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    .chatbot-window {
-        background: white;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        width: 350px;
-        height: 450px;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        position: absolute;
-        bottom: 80px; /* Above the toggle button */
-        right: 0;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(20px);
-        transition: all 0.3s ease-in-out;
-    }
-
-    .chatbot-window.active {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
-
-    .chatbot-header {
-        background: #007bff;
-        color: white;
-        padding: 1rem;
-        font-size: 1.1rem;
-        font-weight: 600;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-    }
-
-    .chatbot-header .close-btn {
-        background: none;
-        border: none;
-        color: white;
-        font-size: 1.2rem;
-        cursor: pointer;
-    }
-
-    .chatbot-messages {
-        flex-grow: 1;
-        padding: 1rem;
-        overflow-y: auto;
-        background: #f8f9fa;
-    }
-
-    .chat-message {
-        padding: 0.75rem 1rem;
-        border-radius: 8px;
-        margin-bottom: 0.75rem;
-        max-width: 85%;
-        word-wrap: break-word;
-    }
-
-    .chat-message.user {
-        background: #e9f7ff;
-        color: #0056b3;
-        align-self: flex-end;
-        margin-left: auto;
-        border-bottom-right-radius: 2px;
-    }
-
-    .chat-message.bot {
-        background: #f0f0f0;
-        color: #333;
-        align-self: flex-start;
-        margin-right: auto;
-        border-bottom-left-radius: 2px;
-    }
-
-    .chatbot-input-area {
-        display: flex;
-        padding: 1rem;
-        border-top: 1px solid #eee;
-        background: #fff;
-    }
-
-    .chatbot-input-area input {
-        flex-grow: 1;
-        border: 1px solid #ced4da;
-        border-radius: 5px;
-        padding: 0.75rem 1rem;
-        font-size: 0.95rem;
-        margin-right: 0.5rem;
-    }
-
-    .chatbot-input-area button {
-        background: #007bff;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        padding: 0.75rem 1rem;
-        cursor: pointer;
-        transition: background 0.2s ease;
-    }
-
-    .chatbot-input-area button:hover {
-        background: #0056b3;
+    .navbar .user-profile {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      overflow: hidden;
     }
 </style>
 @endpush
@@ -523,8 +418,7 @@
 </section>
 
 <!-- Hospital Registrations Overview -->
-<div class="row">
-    <!-- Recent Activities -->
+<!-- <div class="row">
     <div class="col-md-6 mb-4">
         <h2 class="h3 mb-4">Recent Activities</h2>
         @if(isset($recentActivities) && count($recentActivities) > 0)
@@ -543,7 +437,6 @@
         @endif
     </div>
 
-    <!-- Upcoming Appointments -->
     <div class="col-md-6 mb-4">
         <h2 class="h3 mb-4">Upcoming Appointments</h2>
         @if(isset($upcomingAppointmentsList) && count($upcomingAppointmentsList) > 0)
@@ -573,116 +466,5 @@
             </div>
         @endif
     </div>
-</div>
+</div> -->
 @endsection
-
-@push('scripts')
-<script>
-    // Define Laravel routes for use in JavaScript
-    const laravelRoutes = {
-        hospitalsSelection: "{{ route('hospitals.selection') }}",
-        mcuHistory: "{{ route('user.mcu.history') }}",
-        profileEdit: "{{ route('user.profile.edit') }}",
-        hospitalsIndex: "{{ route('hospitals.index') }}"
-    };
-
-    const chatbotToggle = document.getElementById('chatbot-toggle');
-    const chatbotWindow = document.getElementById('chatbot-window');
-    const chatMessages = document.getElementById('chat-messages');
-    const chatInput = document.getElementById('chat-input');
-    const chatSendBtn = document.getElementById('chat-send-btn');
-    const chatbotCloseBtn = document.getElementById('chatbot-close-btn');
-
-    chatbotToggle.addEventListener('click', () => {
-        chatbotWindow.classList.toggle('active');
-    });
-
-    chatbotCloseBtn.addEventListener('click', () => {
-        chatbotWindow.classList.remove('active');
-    });
-
-    const botResponses = {
-        'halo': 'Halo! Ada yang bisa saya bantu?',
-        'bantuan': 'Tentu, apa yang ingin Anda tanyakan? Anda bisa bertanya tentang <a href="' + laravelRoutes.mcuHistory + '">riwayat MCU</a>, <a href="' + laravelRoutes.hospitalsIndex + '">daftar rumah sakit</a>, atau <a href="' + laravelRoutes.profileEdit + '">mengelola profil Anda</a>.',
-        'paket mcu': 'Kami punya paket Basic, Pro, dan Enterprise. Anda bisa <a href="' + laravelRoutes.hospitalsSelection + '">memesan MCU baru di sini</a>.',
-        'rumah sakit': 'Anda bisa melihat daftar rumah sakit mitra kami di halaman <a href="' + laravelRoutes.hospitalsIndex + '">Rumah Sakit</a>.',
-        'profil': 'Untuk mengelola profil Anda, silakan kunjungi halaman <a href="' + laravelRoutes.profileEdit + '">Profil Saya</a>.',
-        'riwayat mcu': 'Anda dapat melihat riwayat Medical Check-Up Anda di halaman <a href="' + laravelRoutes.mcuHistory + '">Riwayat MCU</a>.',
-        'terima kasih': 'Sama-sama! Senang bisa membantu.',
-        'default': 'Maaf, saya belum memahami pertanyaan Anda. Bisakah Anda bertanya dengan cara lain?'
-    };
-
-    chatSendBtn.addEventListener('click', sendMessage);
-    chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            sendMessage();
-        }
-    });
-
-    function sendMessage() {
-        const userMessage = chatInput.value.trim();
-        if (userMessage === '') return;
-
-        appendMessage(userMessage, 'user');
-        chatInput.value = '';
-
-        setTimeout(() => {
-            const botResponse = getBotResponse(userMessage.toLowerCase());
-            appendMessage(botResponse, 'bot');
-            chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to bottom
-        }, 500);
-    }
-
-    function appendMessage(message, sender) {
-        const messageElement = document.createElement('div');
-        messageElement.classList.add('chat-message', sender);
-        if (sender === 'user') {
-            messageElement.textContent = message;
-        } else {
-            messageElement.innerHTML = message;
-        }
-        chatMessages.appendChild(messageElement);
-    }
-
-    function getBotResponse(message) {
-        for (const key in botResponses) {
-            if (message.includes(key)) {
-                return botResponses[key];
-            }
-        }
-        return botResponses['default'];
-    }
-
-    // Initial bot message and suggested questions
-    appendMessage('Halo! Saya HealthNav Bot. Ada yang bisa saya bantu?', 'bot');
-    appendMessage('Anda bisa mencoba bertanya:' +
-                  '<ul>' +
-                  '<li>Apa saja paket MCU?</li>' +
-                  '<li>Dimana saya bisa melihat daftar rumah sakit?</li>' +
-                  '<li>Bagaimana cara mengelola profil saya?</li>' +
-                  '<li>Bagaimana cara melihat riwayat MCU?</li>' +
-                  '<li>Terima kasih</li>' +
-                  '</ul>',
-                  'bot');
-
-</script>
-@endpush
-
-<!-- Chatbot HTML -->
-<div class="chatbot-container">
-    <button id="chatbot-toggle" class="chatbot-toggle-btn">
-        <i class="fas fa-comment-dots"></i>
-    </button>
-
-    <div id="chatbot-window" class="chatbot-window">
-        <div class="chatbot-header">
-            <i class="fas fa-robot"></i> HealthNav Bot
-            <button class="close-btn" id="chatbot-close-btn"><i class="fas fa-times"></i></button>
-        </div>
-        <div class="chatbot-messages" id="chat-messages"></div>
-        <div class="chatbot-input-area">
-            <input type="text" id="chat-input" placeholder="Ketik pesan Anda...">
-            <button id="chat-send-btn"><i class="fas fa-paper-plane"></i></button>
-        </div>
-    </div>
-</div>
