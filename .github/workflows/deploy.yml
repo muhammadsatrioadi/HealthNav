@@ -21,14 +21,6 @@ jobs:
         
     - name: Install Composer dependencies
       run: composer install --no-dev --prefer-dist --optimize-autoloader
-
-    - name: Clear and optimize Laravel caches
-      run: |
-        php artisan config:clear
-        php artisan cache:clear
-        php artisan route:clear
-        php artisan view:clear
-        php artisan optimize
         
     - name: Deploy to public_html with rsync
       run: |
