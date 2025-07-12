@@ -19,15 +19,8 @@ jobs:
         php-version: '8.2' # Sesuaikan dengan versi PHP aplikasi Laravel Anda
         extensions: mbstring, pdo_mysql, bcmath # Tambahkan ekstensi PHP yang dibutuhkan
         
-
     - name: Install Composer dependencies
       run: composer install --no-dev --prefer-dist --optimize-autoloader
-
-    - name: Install NPM dependencies
-      run: npm install
-
-    - name: Build frontend assets
-      run: npm run build # Atau npm run dev jika Anda membutuhkan aset yang tidak diminifikasi
 
     - name: Clear and optimize Laravel caches
       run: |
