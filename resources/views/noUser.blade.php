@@ -14,7 +14,7 @@
                 <div class="block">
                     <div class="divider mb-3"></div>
                     <span class="text-uppercase text-sm letter-spacing" style="color: black;">Medical Tourism</span>
-                    <h1 class="mb-3 mt-3" style="color: #26355D;">HealthNav111</h1>
+                    <h1 class="mb-3 mt-3" style="color: #26355D;">HealthNav Kelompok 2</h1>
                     <p class="mb-4 pr-5" style="color: black;">Medical tourism is a person's trip abroad for the purpose
                         of
                         receiving health care, including general check-ups, treatment, and rehabilitation. In the health
