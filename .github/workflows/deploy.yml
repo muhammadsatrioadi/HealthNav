@@ -1,0 +1,38 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2' # Sesuaikan dengan versi PHP aplikasi Laravel Anda
+        extensions: mbstring, pdo_mysql, bcmath # Tambahkan ekstensi PHP yang dibutuhkan
+        
+    - name: Install Composer dependencies
+      run: composer install --no-dev --prefer-dist --optimize-autoloader
+        
+    - name: Deploy to public_html with rsync
+      run: |
+          rsync -av --delete \
+            --exclude='.env' \
+            --exclude='.git/' \
+            --no-perms --no-group --omit-dir-times \
+            "${{ github.workspace }}/" \
+            /home/yhotech.my.id/public_html/
+
+    - name: Recreate storage symlink
+      run: |
+          rm -f /home/yhotech.my.id/public_html/public/storage
+          cd /home/yhotech.my.id/public_html
+          php artisan storage:link
