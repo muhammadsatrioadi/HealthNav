@@ -23,6 +23,11 @@ class SendLoginNotification
      */
     public function handle(Login $event): void
     {
+        // Skip email sending when running locally or when mailer is set to 'log'
+        if (app()->environment('local') || config('mail.default') === 'log' || config('mail.mailer') === 'log') {
+            return;
+        }
+
         Mail::to($event->user->email)->send(new LoginNotification($event->user));
     }
 }

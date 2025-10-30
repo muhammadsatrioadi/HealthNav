@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <meta name="description" content="HealthNav - Your Trusted Healthcare Navigation Partner">
-  <meta name="author" content="HealthNav">
+  <meta name="description" content="Panuntun Kasarasan - Guide to Well-being">
+  <meta name="author" content="Panuntun Kasarasan">
 
-  <title>HealthNav</title>
+  <title>Panuntun Kasarasan</title>
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="{{ asset('assets/images/logo.png') }}">
+  <link rel="icon" type="image/png" href="{{ asset('assets/images/logotitle.png') }}">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -27,23 +27,31 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
   <style>
+    :root {
+      --green: #9CAF88;
+      --gold: #E3C16F;
+      --brown: #6B4B33;
+      --terracotta: #A1653B;
+      --cream: #F8F3E9;
+    }
+
     /* Navbar Styles */
     .navbar {
-      background-color: #ffffff;
+      background-color: var(--cream);
       box-shadow: none;
-      border-bottom: 1px solid #e5e7eb;
+      border-bottom: 1px solid var(--gold);
       padding: 0.5rem 0;
     }
     
     .navbar.scrolled {
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      box-shadow: 0 1px 3px rgba(107,75,51,0.07);
     }
     
     .navbar-brand {
       display: flex;
       align-items: center;
       font-weight: 600;
-      color: #111827 !important;
+      color: var(--brown) !important;
       padding: 0;
     }
     
@@ -54,14 +62,14 @@
     
     .navbar-brand span {
       font-size: 1.25rem;
-      color: #111827;
+      color: var(--brown);
       -webkit-text-fill-color: initial;
       background: none;
       font-family: 'Poppins', sans-serif;
     }
     
     .nav-link {
-      color: #4b5563 !important;
+      color: var(--terracotta) !important;
       font-weight: 500;
       padding: 0.5rem 1rem;
       font-size: 0.95rem;
@@ -69,7 +77,7 @@
     }
     
     .nav-link:hover {
-      color: #111827 !important;
+      color: var(--brown) !important;
     }
     
     .nav-link::after {
@@ -84,11 +92,17 @@
 
     .navbar .search-input {
       padding: 0.5rem 1rem 0.5rem 2.5rem;
-      border: 1px solid #e5e7eb;
+      border: 1px solid var(--gold);
+      background: var(--cream);
       border-radius: 6px;
       width: 250px;
       font-size: 0.9rem;
-      color: #4b5563;
+      color: var(--brown);
+    }
+
+    .navbar .search-input::placeholder {
+      color: var(--terracotta);
+      opacity: 0.8;
     }
 
     .navbar .search-icon {
@@ -96,7 +110,7 @@
       left: 0.75rem;
       top: 50%;
       transform: translateY(-50%);
-      color: #9ca3af;
+      color: var(--gold);
       font-size: 0.9rem;
     }
 
@@ -106,6 +120,8 @@
       height: 35px;
       border-radius: 50%;
       overflow: hidden;
+      border: 2px solid var(--gold);
+      background: var(--cream);
     }
 
     .navbar .user-profile img {
@@ -122,18 +138,22 @@
     /* Admin Sidebar */
     .admin-sidebar {
       min-height: 100vh;
-      background: #26355D;
-      color: white;
+      background: var(--brown);
+      color: var(--cream);
     }
 
     .admin-sidebar .nav-link {
-      color: white !important;
+      color: var(--cream) !important;
       padding: 0.5rem 1rem;
       margin: 0.2rem 0;
+      border-radius: 6px;
+      background: none;
+      transition: background 0.2s, color 0.2s;
     }
 
     .admin-sidebar .nav-link:hover {
-      background: rgba(255,255,255,0.1);
+      background: var(--terracotta);
+      color: var(--gold) !important;
     }
     
     /* Layout */
@@ -148,6 +168,7 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      background-color: var(--cream);
     }
 
     main {
@@ -171,13 +192,14 @@
     .main-content {
       min-height: calc(100vh - 60px);
       padding-top: 60px;
+      background: transparent;
     }
     
     /* Footer Styles */
     .footer {
       flex-shrink: 0;
-      background-color: #26355D;
-      color: white;
+      background-color: var(--brown);
+      color: var(--cream);
       padding: 2rem 0;
       width: 100%;
       position: relative;
@@ -201,24 +223,24 @@
     }
     
     .footer-links a {
-      color: white;
+      color: var(--cream);
       text-decoration: none;
       transition: all 0.3s ease;
     }
     
     .footer-links a:hover {
-      color: #4A90E2;
+      color: var(--gold);
     }
     
     .social-links a {
-      color: white;
+      color: var(--gold);
       margin-right: 1rem;
       font-size: 1.5rem;
       transition: all 0.3s ease;
     }
     
     .social-links a:hover {
-      color: #4A90E2;
+      color: var(--green);
       transform: translateY(-3px);
     }
 
@@ -227,17 +249,19 @@
       display: flex;
       align-items: center;
       padding: 8px 12px;
-      border: 1px solid #e5e7eb;
+      border: 1px solid var(--gold);
       border-radius: 6px;
       cursor: pointer;
       transition: all 0.2s ease;
-      background: white;
+      background: var(--cream);
       min-width: 160px;
+      color: var(--brown);
     }
 
     .navbar .user-profile-dropdown:hover {
-      border-color: #d1d5db;
-      background: #f9fafb;
+      border-color: var(--terracotta);
+      background: var(--gold);
+      color: var(--brown);
     }
 
     .navbar .user-profile-wrapper {
@@ -251,6 +275,19 @@
       height: 35px;
       border-radius: 50%;
       overflow: hidden;
+      border: 2px solid var(--gold);
+    }
+
+    /* Alerts */
+    .alert-success {
+      background: var(--green);
+      color: var(--cream);
+      border: none;
+    }
+    .alert-danger {
+      background: var(--terracotta);
+      color: var(--cream);
+      border: none;
     }
 
     /* Chatbot Styles */
@@ -262,8 +299,8 @@
     }
 
     .chatbot-toggle-btn {
-        background: #007bff;
-        color: white;
+        background: var(--terracotta);
+        color: var(--cream);
         border: none;
         border-radius: 50%;
         width: 60px;
@@ -272,21 +309,22 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+        box-shadow: 0 4px 8px rgba(161,101,59,0.20);
         cursor: pointer;
         transition: all 0.3s ease;
     }
 
     .chatbot-toggle-btn:hover {
-        background: #0056b3;
-        box-shadow: 0 6px 12px rgba(0, 123, 255, 0.4);
+        background: var(--gold);
+        color: var(--brown);
+        box-shadow: 0 6px 12px rgba(161,101,59,0.25);
         transform: translateY(-2px);
     }
 
     .chatbot-window {
-        background: white;
+        background: var(--cream);
         border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 5px 15px rgba(107,75,51,0.13);
         width: 350px;
         height: 450px;
         display: flex;
@@ -299,6 +337,7 @@
         visibility: hidden;
         transform: translateY(20px);
         transition: all 0.3s ease-in-out;
+        border: 2px solid var(--gold);
     }
 
     .chatbot-window.active {
@@ -308,8 +347,8 @@
     }
 
     .chatbot-header {
-        background: #007bff;
-        color: white;
+        background: var(--brown);
+        color: var(--gold);
         padding: 1rem;
         font-size: 1.1rem;
         font-weight: 600;
@@ -323,7 +362,7 @@
     .chatbot-header .close-btn {
         background: none;
         border: none;
-        color: white;
+        color: var(--gold);
         font-size: 1.2rem;
         cursor: pointer;
     }
@@ -332,7 +371,7 @@
         flex-grow: 1;
         padding: 1rem;
         overflow-y: auto;
-        background: #f8f9fa;
+        background: var(--cream);
         display: flex;
         flex-direction: column;
     }
@@ -348,8 +387,8 @@
     }
 
     .chat-message.user {
-        background: #e9f7ff;
-        color: #0056b3;
+        background: var(--green);
+        color: var(--cream);
         align-self: flex-end;
         margin-left: auto;
         border-bottom-right-radius: 2px;
@@ -357,8 +396,8 @@
     }
 
     .chat-message.bot {
-        background: #f0f0f0;
-        color: #333;
+        background: var(--gold);
+        color: var(--brown);
         align-self: flex-start;
         margin-right: auto;
         border-bottom-left-radius: 2px;
@@ -368,49 +407,57 @@
     .chatbot-input-area {
         display: flex;
         padding: 1rem;
-        border-top: 1px solid #eee;
-        background: #fff;
+        border-top: 1px solid var(--gold);
+        background: var(--cream);
     }
 
     .chatbot-input-area input {
         flex-grow: 1;
-        border: 1px solid #ced4da;
+        border: 1px solid var(--gold);
         border-radius: 5px;
         padding: 0.75rem 1rem;
         font-size: 0.95rem;
         margin-right: 0.5rem;
+        background: var(--cream);
+        color: var(--brown);
+    }
+
+    .chatbot-input-area input::placeholder {
+      color: var(--terracotta);
+      opacity: 0.8;
     }
 
     .chatbot-input-area button {
-        background: #007bff;
-        color: white;
+        background: var(--terracotta);
+        color: var(--cream);
         border: none;
         border-radius: 5px;
         padding: 0.75rem 1rem;
         cursor: pointer;
-        transition: background 0.2s ease;
+        transition: background 0.2s, color 0.2s;
     }
 
     .chatbot-input-area button:hover {
-        background: #0056b3;
+        background: var(--gold);
+        color: var(--brown);
     }
 
     @media (max-width: 991.98px) { /* For Bootstrap's lg breakpoint */
       .navbar-collapse.show.mobile-nav-override {
-        background-color: #ffffff !important; /* Ensure solid background */
-        position: fixed !important; /* Position fixed relative to viewport */
-        top: 60px !important; /* Position below fixed navbar, adjust if navbar height changes */
+        background-color: var(--cream) !important;
+        position: fixed !important;
+        top: 60px !important;
         left: 0 !important;
         width: 100% !important;
-        height: calc(100vh - 60px) !important; /* Take full viewport height minus navbar height */
-        padding: 1rem !important; /* Add some padding for better look */
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
-        z-index: 1039 !important; /* Ensure it's above other content */
-        overflow-y: auto !important; /* Allow scrolling if content is long */
+        height: calc(100vh - 60px) !important;
+        padding: 1rem !important;
+        box-shadow: 0 4px 6px -1px rgba(161,101,59,0.12), 0 2px 4px -1px rgba(227,193,111,0.09) !important;
+        z-index: 1039 !important;
+        overflow-y: auto !important;
       }
 
       .mobile-nav-override .navbar-nav {
-        flex-direction: column !important; /* Stack nav items vertically */
+        flex-direction: column !important;
         width: 100% !important;
       }
 
@@ -448,7 +495,7 @@
       }
 
       .mobile-nav-override .dropdown-menu {
-        position: static !important; /* Remove absolute positioning for dropdown menu in collapsed navbar */
+        position: static !important;
         width: 100% !important;
         transform: none !important;
         margin-top: 0.5rem !important;
@@ -471,8 +518,8 @@
   <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container">
       <a class="navbar-brand" href="{{ route('main') }}">
-        <img src="{{ asset('assets/images/logo.png') }}" alt="HealthNav Logo">
-        <span>HealthNav</span>
+        <img src="{{ asset('assets/images/logotitle.png') }}" alt="Panuntun Kasarasan Logo">
+        <span>Panuntun Kasarasan</span>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -606,8 +653,8 @@
     <div class="row">
       <div class="col-md-4">
         <div class="footer-logo">
-          <img src="{{ asset('assets/images/logo.png') }}" alt="HealthNav Logo" style="filter: brightness(0) invert(1);">
-          <p>Your trusted partner in medical tourism. We provide comprehensive medical check-up packages combined with exciting tourism experiences.</p>
+          <img src="{{ asset('assets/images/logonavbar.png') }}" alt="Panuntun Kasarasan Logo">
+          <p>Panutun Kasarasan | Guide to Well-being. Menemani perjalanan kesehatan Anda dengan layanan terbaik dan pengalaman yang bermakna.</p>
         </div>
       </div>
       <div class="col-md-4">
@@ -630,21 +677,21 @@
         </div>
         <div class="mt-3">
           <p><i class="fas fa-phone"></i> +62 274 123456</p>
-          <p><i class="fas fa-envelope"></i> info@healthnav.com</p>
+          <p><i class="fas fa-envelope"></i> info@panuntunkasarasan.com</p>
           <p><i class="fas fa-map-marker-alt"></i> Yogyakarta, Indonesia</p>
         </div>
       </div>
     </div>
-    <hr class="mt-4" style="border-color: rgba(255,255,255,0.1);">
+    <hr class="mt-4" style="border-color: var(--gold);">
     <div class="text-center mt-4">
-      <p>&copy; {{ date('Y') }} HealthNav. All rights reserved.</p>
+      <p>&copy; {{ date('Y') }} Panuntun Kasarasan. All rights reserved.</p>
     </div>
   </div>
 </footer>
 <!-- Footer End -->
 
 <!-- Back to top button -->
-<a href="#top" class="back-to-top" id="backToTop" data-toggle="tooltip" title="Back to Top">
+<a href="#top" class="back-to-top" id="backToTop" data-toggle="tooltip" title="Back to Top" style="background: var(--terracotta); color:var(--cream);">
   <i class="icofont-simple-up"></i>
 </a>
 
@@ -807,7 +854,7 @@ if (window.history.replaceState) {
     };
 
     // Initial bot message and suggested questions
-    appendMessage('Halo! Saya HealthNav Bot. Ada yang bisa saya bantu?', 'bot');
+    appendMessage('Halo! Saya Panuntun Kasarasan Bot. Ada yang bisa saya bantu?', 'bot');
     appendMessage('Anda bisa mencoba bertanya:' +
                   '<ul>' +
                   '<li>Apa saja paket MCU?</li>' +

@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="HealthNav - Your Trusted Healthcare Navigation Partner">
-  <meta name="author" content="HealthNav">
+  <meta name="description" content="Panutun Kasarasan - Guide to Well-being">
+  <meta name="author" content="Panutun Kasarasan">
 
-  <title>HealthNav | Your Healthcare Journey Partner</title>
+  <title>Panutun Kasarasan | Guide to Well-being</title>
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon">
+  <link rel="shortcut icon" href="{{ asset('assets/images/logotitle.png') }}" type="image/x-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -23,6 +23,84 @@
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+
+  <style>
+    :root {
+      --green: #9CAF88;
+      --gold: #E3C16F;
+      --brown: #6B4B33;
+      --terracotta: #A1653B;
+      --cream: #F8F3E9;
+    }
+    body {
+      background: var(--cream) !important;
+      color: var(--brown);
+    }
+    .header-top-bar.bg-gradient {
+      background: linear-gradient(90deg, var(--terracotta) 0%, var(--gold) 100%)!important;
+    }
+    .navbar, .footer, .footer-bottom {
+      background: var(--cream)!important;
+    }
+    .navbar-nav .nav-link,
+    .top-bar-info a,
+    .footer-widget,
+    .footer-menu a,
+    .copyright {
+      color: var(--brown)!important;
+    }
+    .navbar-nav .nav-item.active .nav-link, 
+    .navbar-nav .nav-link:hover {
+      color: var(--terracotta)!important;
+      font-weight: 600;
+    }
+    .navbar-brand img,
+    .footer-logo {
+      background: #fff8;
+      border-radius: 1em;
+      box-shadow: 0 2px 12px -4px #a1653b33;
+    }
+    .btn-main-2,
+    .btn.btn-main-2 {
+      background: linear-gradient(90deg, var(--brown) 0%, var(--terracotta) 100%);
+      color: #fff!important;
+      border: none;
+    }
+    .btn.btn-main-2:hover, .btn.btn-main-2:focus {
+      background: linear-gradient(90deg, var(--gold) 0%, var(--green) 100%);
+      color: var(--brown)!important;
+    }
+    .back-to-top {
+      background: var(--terracotta);
+      color: #fff;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      right: 24px;
+      bottom: 24px;
+    }
+    .back-to-top:hover {
+      background: var(--gold);
+      color: var(--brown)!important;
+      border-color: var(--terracotta);
+    }
+    .footer-widget h6 {
+      color: var(--brown)!important;
+    }
+    .footer-socials a {
+      color: var(--terracotta)!important;
+      background: var(--gold);
+      border-radius: 50%;
+      width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center;
+      transition: background 0.2s, color 0.2s;
+    }
+    .footer-socials a:hover {
+      color: #fff!important;
+      background: var(--terracotta);
+    }
+    .footer {
+      border-top: 2px solid var(--gold);
+    }
+  </style>
 
 </head>
 
@@ -41,8 +119,8 @@
         <div class="col-lg-6">
           <ul class="top-bar-info list-inline-item pl-0 mb-0">
             <li class="list-inline-item">
-              <a href="mailto:healthnav@care.com" class="text-white">
-                <i class="icofont-envelope mr-2"></i>healthnav@care.com
+              <a href="mailto:info@panuntunkasarasan.com">
+                <i class="icofont-envelope mr-2"></i>info@panuntunkasarasan.com
               </a>
             </li>
             <li class="list-inline-item">
@@ -52,7 +130,7 @@
         </div>
         <div class="col-lg-6">
           <div class="text-lg-right top-right-bar mt-2 mt-lg-0">
-            <a href="tel:+62-877-3903-5397" class="text-white">
+            <a href="tel:+62-877-3903-5397">
               <i class="icofont-phone-circle mr-2"></i>
               <span>Hotline: </span>
               <span class="font-weight-bold">+62 877-3903-5397</span>
@@ -66,7 +144,7 @@
   <nav class="navbar navbar-expand-lg navigation nav-transparent" id="navbar">
     <div class="container">
       <a class="navbar-brand" href="{{ route('main') }}">
-        <img src="{{ asset('assets/images/logo.png') }}" alt="HealthNav Logo" class="img-fluid main-logo">
+        <img src="{{ asset('assets/images/@Logo lomba.png') }}" alt="Panutun Kasarasan Logo" class="img-fluid main-logo" style="max-width: 150px;">
       </a>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarmain">
@@ -104,9 +182,8 @@
     <div class="row">
       <div class="col-lg-4 col-md-6 mb-5">
         <div class="footer-widget">
-          <h6 class="mb-4 text-capitalize">About HealthNav</h6>
-          <p class="mb-3">We are your trusted partner in your healthcare journey, providing safe, comfortable, and high-quality international medical services.</p>
-          <p class="text-muted mb-4">Your health is our top priority. With HealthNav, you can undergo medical care with complete confidence and peace of mind.</p>
+          <h6 class="mb-4 text-capitalize">About Panuntun Kasarasan</h6>
+          <p class="text-muted mb-4" style="color: var(--brown)!important;">Perjalanan kesehatan Anda, panduan kami. Bersama Panuntun Kasarasan, rasakan pendampingan terbaik menuju kesejahteraan.</p>
           <p class="mb-2"><i class="icofont-location-pin mr-2"></i>Jl. Laksda Adisucipto No.32-34, Demangan, Yogyakarta</p>
         </div>
       </div>
@@ -127,7 +204,7 @@
       <div class="col-lg-4 col-md-6">
         <div class="footer-widget">
           <div class="mb-4">
-            <img src="{{ asset('assets/images/logoo.png') }}" alt="HealthNav" class="img-fluid footer-logo">
+            <img src="{{ asset('assets/images/@Logo lomba.png') }}" alt="Panutun Kasarasan" class="img-fluid footer-logo" style="max-width: 120px;">
           </div>
           <ul class="list-inline footer-socials">
             <li class="list-inline-item">
@@ -148,12 +225,12 @@
     </div>
   </div>
 
-  <div class="footer-bottom">
+  <div class="footer-bottom" style="background: var(--gold);">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-md-12">
-          <div class="copyright text-center">
-            <p class="mb-0">&copy; {{ date('Y') }} HealthNav. All Rights Reserved.</p>
+          <div class="copyright text-center" style="color: var(--brown)!important;">
+            <p class="mb-0">&copy; {{ date('Y') }} Panuntun Kasarasan. All Rights Reserved.</p>
           </div>
         </div>
       </div>
