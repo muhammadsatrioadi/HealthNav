@@ -2,23 +2,26 @@
 
 @section('content')
 <!-- Slider Start -->
-<section class="banner">
-    <div class="container">
+<section class="banner hero-section position-relative rounded-lg shadow-soft" style="background: var(--cream);">
+    <div class="motif-bg"></div>
+    <div class="container py-5">
         <div class="row align-items-center">
-            <div class="col-lg-6 col-md-12 col-xl-7">
-                <div class="block">
-                    <div class="divider mb-3"></div>
-                    <span class="text-uppercase text-sm letter-spacing" style="color: black;">Medical Tourism</span>
-                    <h1 class="mb-3 mt-3" style="color: #26355D;">HealthNav</h1>
-                    <p class="mb-4 pr-5" style="color: black;">Medical tourism is a person's trip abroad for the purpose
-                        of
-                        receiving health care, including general check-ups, treatment, and rehabilitation. In the health
-                        industry, patients will be more likely to seek safe, comfortable, and quality services.</p>
-                    <div class="d-flex">
-                        <a href="/about" class="btn btn-danger mr-3">Learn More</a>
-                        <a href="/selection-hospital" class="btn btn-primary">Find Hospital</a>
-                    </div>
+            <div class="col-lg-6 col-md-12 col-xl-6 mb-4 mb-lg-0 text-center text-lg-left">
+                <img src="{{ asset('assets/images/@Logo lomba.png') }}" class="mb-3" alt="Panutun Kasarasan Logo" style="max-width: 220px; background: rgba(255,255,255,0.7); border-radius: 1.5em; box-shadow: 0 4px 24px -6px #A1653B33;" loading="lazy" />
+                <h1 class="mt-4 mb-0" style="color: var(--brown); font-size: 2.6em; font-family: 'Poppins', 'Nunito', sans-serif; font-weight: 700;">Panutun Kasarasan</h1>
+                <div style="font-size: 1.18em; font-weight: 500; margin-top: 0.5em; color: var(--terracotta); font-family: 'Quicksand', 'Poppins', 'Nunito', sans-serif; letter-spacing: 0.01em;">
+                  Nuntun Waras, Ngraket Rasa
+                  <span class="d-block" style="font-size: 0.82em; color: var(--brown); opacity:0.75;">Guiding Wellness, Strengthening Connection</span>
                 </div>
+                <p class="mt-4" style="color: var(--brown); max-width: 35em; line-height: 170%; font-size: 1.09em; background: rgba(240,231,217,0.8); padding: 1.3em 1.7em; border-radius: 18px; margin-left: 0;">Solusi layanan kesehatan terpadu berpadu kehangatan Jawa dan inovasi modern. Mari jelajahi harmoni antara tubuh, pikiran, dan jiwa untuk hidup yang lebih baik.</p>
+                <div class="d-flex flex-wrap gap-3 mt-3">
+                  <a href="/about" class="btn gradient-btn shadow-soft" style="margin-right:1.5em;">Tentang Kami</a>
+                  <a href="/selection-hospital" class="btn gradient-btn-2 shadow-soft">Pilih Rumah Sakit</a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-xl-6 d-none d-lg-block">
+                <!-- Optional: illustration or Javanese-inspired motif-background -->
+                <div style="background: url('assets/images/bg/batik-bg.png') center/contain no-repeat; min-height: 310px; min-width: 90%; opacity:0.16; border-radius: 41px;"></div>
             </div>
         </div>
     </div>
@@ -586,6 +589,41 @@ document.getElementById('chatInput').addEventListener('keypress', function(e) {
     }
 });
 </script>
+
+<!-- Gallery Section: Explore with Panuntun Kasarasan -->
+<section class="gallery-section my-5 py-4">
+  <div class="container">
+    <h2 class="text-center mb-4" style="color: var(--brown); font-family: 'Poppins', 'Nunito', sans-serif;">Galeri Panuntun Kasarasan</h2>
+    <div class="row g-4">
+      <!-- Team Photos -->
+      <div class="col-6 col-md-3"><img src="assets/images/team/1.jpg" alt="Tim 1" class="img-fluid rounded-lg shadow-soft" loading="lazy"></div>
+      <div class="col-6 col-md-3"><img src="assets/images/team/2.jpg" alt="Tim 2" class="img-fluid rounded-lg shadow-soft" loading="lazy"></div>
+      <div class="col-6 col-md-3"><img src="assets/images/team/3.jpg" alt="Tim 3" class="img-fluid rounded-lg shadow-soft" loading="lazy"></div>
+      <div class="col-6 col-md-3"><img src="assets/images/team/4.jpg" alt="Tim 4" class="img-fluid rounded-lg shadow-soft" loading="lazy"></div>
+      <!-- Service -->
+      <div class="col-6 col-md-3"><img src="assets/images/service/service-1.jpg" alt="Service 1" class="img-fluid rounded-md shadow-soft" loading="lazy"></div>
+      <div class="col-6 col-md-3"><img src="assets/images/service/service-2.jpg" alt="Service 2" class="img-fluid rounded-md shadow-soft" loading="lazy"></div>
+      <div class="col-6 col-md-3"><img src="assets/images/service/service-3.jpg" alt="Service 3" class="img-fluid rounded-md shadow-soft" loading="lazy"></div>
+      <div class="col-6 col-md-3"><img src="assets/images/service/service-4.jpg" alt="Service 4" class="img-fluid rounded-md shadow-soft" loading="lazy"></div>
+      <!-- Blog/Events/Testimoni -->
+      <div class="col-6 col-md-3"><img src="assets/images/blog/blog-1.jpg" alt="Kegiatan 1" class="img-fluid rounded-md shadow-soft" loading="lazy"></div>
+      <div class="col-6 col-md-3"><img src="assets/images/blog/blog-6.jpg" alt="Kegiatan 2" class="img-fluid rounded-md shadow-soft" loading="lazy"></div>
+      <div class="col-6 col-md-3"><img src="assets/images/blog/testimonial1.jpg" alt="Testimoni 1" class="img-fluid rounded-full shadow-soft" loading="lazy"></div>
+      <div class="col-6 col-md-3"><img src="assets/images/blog/ulasan1.jpg" alt="Ulasan" class="img-fluid rounded-md shadow-soft" loading="lazy"></div>
+      <!-- About/Moment Jawa -->
+      <div class="col-6 col-md-3"><img src="assets/images/about/about-1.jpg" alt="About 1" class="img-fluid rounded-lg shadow-soft" loading="lazy"></div>
+      <div class="col-6 col-md-3"><img src="assets/images/about/about-2.jpg" alt="About 2" class="img-fluid rounded-lg shadow-soft" loading="lazy"></div>
+      <div class="col-6 col-md-3"><img src="assets/images/about/about-3.jpg" alt="About 3" class="img-fluid rounded-lg shadow-soft" loading="lazy"></div>
+      <div class="col-6 col-md-3"><img src="assets/images/about/img-3.jpg" alt="Moment 1" class="img-fluid rounded-lg shadow-soft" loading="lazy"></div>
+      <!-- Background Jawa -->
+      <div class="col-12 col-md-6"><img src="assets/images/bg/banner.jpg" alt="Jawa Banner" class="img-fluid rounded-lg mt-4 shadow-soft w-100" loading="lazy"></div>
+      <div class="col-12 col-md-6"><img src="assets/images/bg/bg-4.jpg" alt="Batik Jawa" class="img-fluid rounded-lg mt-4 shadow-soft w-100" loading="lazy"></div>
+    </div>
+    <div class="text-center mt-4">
+      <a href="/about" class="btn gradient-btn-2 shadow-soft">Selengkapnya tentang aktivitas & layanan kami</a>
+    </div>
+  </div>
+</section>
 
 @endsection
 

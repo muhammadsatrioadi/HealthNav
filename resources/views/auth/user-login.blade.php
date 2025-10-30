@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card shadow-lg">
-                <div class="card-header bg-primary text-white text-center">
+                <div class="card-header text-white text-center" style="background: linear-gradient(90deg, var(--gold) 0%, var(--terracotta) 100%);">
                     <h4 class="mb-0">
                         <i class="fas fa-user me-2"></i>
                          Login
@@ -73,7 +73,7 @@
                                 </div>
                                 <div class="col-6 text-end">
                                     @if (Route::has('user.password.request'))
-                                        <a class="text-primary" href="{{ route('user.password.request') }}">
+                                        <a class="" style="color: var(--terracotta);" href="{{ route('user.password.request') }}">
                                             Forgot Password?
                                         </a>
                                     @endif
@@ -82,14 +82,14 @@
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-block w-100">
+                            <button type="submit" class="btn gradient-btn-2 btn-block w-100">
                                 <i class="fas fa-sign-in-alt me-2"></i>
                                 Login 
                             </button>
                         </div>
 
                         <div class="text-center mt-4">
-                            <p>Don't have an account? <a href="{{ route('user.register') }}" class="text-primary">Register here</a></p>
+                            <p>Don't have an account? <a href="{{ route('user.register') }}" style="color: var(--terracotta);">Register here</a></p>
                         </div>
                     </form>
                 </div>
@@ -99,21 +99,21 @@
             <div class="row mt-4">
                 <div class="col-md-4">
                     <div class="card text-center p-3">
-                        <i class="fas fa-hospital text-primary mb-2" style="font-size: 24px;"></i>
+                        <i class="fas fa-hospital mb-2" style="font-size: 24px; color: var(--brown);"></i>
                         <h6>Choose Hospital</h6>
                         <small>Select from our network of trusted hospitals</small>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card text-center p-3">
-                        <i class="fas fa-calendar-check text-primary mb-2" style="font-size: 24px;"></i>
+                        <i class="fas fa-calendar-check mb-2" style="font-size: 24px; color: var(--brown);"></i>
                         <h6>Book Appointments</h6>
                         <small>Easy scheduling for your medical check-up</small>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card text-center p-3">
-                        <i class="fas fa-file-medical text-primary mb-2" style="font-size: 24px;"></i>
+                        <i class="fas fa-file-medical mb-2" style="font-size: 24px; color: var(--brown);"></i>
                         <h6>Medical Records</h6>
                         <small>Access your medical history anytime</small>
                     </div>

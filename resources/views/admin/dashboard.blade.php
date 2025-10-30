@@ -14,7 +14,7 @@
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
                         <div><i class="fas fa-hospital me-1"></i> Hospital Management</div>
-                        <a href="{{ route('admin.hospitals.create') }}" class="btn btn-sm btn-primary">
+                        <a href="{{ route('admin.hospitals.create') }}" class="btn btn-sm" style="background: linear-gradient(90deg, var(--gold) 0%, var(--terracotta) 100%); color: var(--cream); border: none;">
                             <i class="fas fa-plus"></i> Add Hospital
                         </a>
                     </div>
@@ -49,7 +49,7 @@
                         </table>
                     </div>
                     <div class="text-end mt-3">
-                        <a href="{{ route('admin.hospitals.index') }}" class="btn btn-primary">
+                        <a href="{{ route('admin.hospitals.index') }}" class="btn" style="background: linear-gradient(90deg, var(--gold) 0%, var(--terracotta) 100%); color: var(--cream); border: none;">
                             <i class="fas fa-list"></i> View All Hospitals
                         </a>
                     </div>
@@ -61,7 +61,7 @@
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
                         <div><i class="fas fa-users me-1"></i> User Management</div>
-                        <a href="{{ route('admin.users.create') }}" class="btn btn-sm btn-primary">
+                        <a href="{{ route('admin.users.create') }}" class="btn btn-sm" style="background: linear-gradient(90deg, var(--gold) 0%, var(--terracotta) 100%); color: var(--cream); border: none;">
                             <i class="fas fa-plus"></i> Add User
                         </a>
                     </div>
@@ -96,7 +96,7 @@
                         </table>
                     </div>
                     <div class="text-end mt-3">
-                        <a href="{{ route('admin.users.index') }}" class="btn btn-primary">
+                        <a href="{{ route('admin.users.index') }}" class="btn" style="background: linear-gradient(90deg, var(--gold) 0%, var(--terracotta) 100%); color: var(--cream); border: none;">
                             <i class="fas fa-list"></i> View All Users
                         </a>
                     </div>
@@ -107,7 +107,7 @@
 
     <div class="row">
         <div class="col-xl-3 col-md-6">
-            <div class="card bg-primary text-white mb-4">
+            <div class="card text-white mb-4" style="background: var(--brown);">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
@@ -126,7 +126,7 @@
             </div>
         </div>
         <div class="col-xl-3 col-md-6">
-            <div class="card bg-success text-white mb-4">
+            <div class="card text-white mb-4" style="background: var(--green); color: var(--brown);">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
@@ -145,7 +145,7 @@
             </div>
         </div>
         <div class="col-xl-3 col-md-6">
-            <div class="card bg-warning text-white mb-4">
+            <div class="card text-white mb-4" style="background: var(--gold); color: var(--brown);">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
@@ -164,7 +164,7 @@
             </div>
         </div>
         <div class="col-xl-3 col-md-6">
-            <div class="card bg-info text-white mb-4">
+            <div class="card text-white mb-4" style="background: var(--terracotta);">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
@@ -270,7 +270,7 @@
             labels: ['Basic', 'Standard', 'Premium'],
             datasets: [{
                 data: packageData,
-                backgroundColor: ['#0d6efd', '#198754', '#ffc107']
+                backgroundColor: ['#9CAF88', '#E3C16F', '#6B4B33']
             }]
         },
         options: {
@@ -293,7 +293,7 @@
             datasets: [{
                 label: 'Number of Registrations',
                 data: statusData,
-                backgroundColor: ['#ffc107', '#0dcaf0', '#198754', '#dc3545']
+                backgroundColor: ['#E3C16F', '#9CAF88', '#6B4B33', '#A1653B']
             }]
         },
         options: {

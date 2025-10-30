@@ -1,5 +1,11 @@
 @extends('layouts.shared')
 
+@push('styles')
+<style>
+  .hero-section:before { background: linear-gradient(120deg, rgba(248,243,233,0.78) 60%, rgba(156,175,136,0.16) 100%) !important; }
+</style>
+@endpush
+
 @section('content')
 
 
@@ -7,92 +13,83 @@
 
 
 <!-- Slider Start -->
-<section class="banner">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6 col-md-12 col-xl-7">
-                <div class="block">
-                    <div class="divider mb-3"></div>
-                    <span class="text-uppercase text-sm letter-spacing" style="color: black;">Medical Tourism</span>
-
-                    <h1 class="mb-3 mt-3" style="color: #26355D;">HealthNav</h1>
-
-                    <p class="mb-4 pr-5" style="color: black;">Medical tourism is a person's trip abroad for the purpose
-                        of
-                        receiving health care, including general check-ups, treatment, and rehabilitation. In the health
-                        industry, patients will be more likely to seek safe, comfortable, and quality services.</p>
-                    <div class="d-flex">
-                        <a href="/login" class="btn btn-danger mr-3">Learn More</a>
-                        <a href="/login" class="btn btn-primary">Find Hospital</a>
-                    </div>
-                </div>
-            </div>
+<section class="banner hero-section position-relative rounded-lg shadow-soft d-flex align-items-center justify-content-center min-vh-100" style="background: var(--cream);">
+    <div class="motif-bg"></div>
+    <div class="container py-5 d-flex flex-column align-items-center justify-content-center" style="min-height: 80vh;">
+        <img src="{{ asset('assets/images/logonavbar.png') }}" class="mb-4 mt-2" alt="Panutun Kasarasan Logo" style="max-width: 240px; background: rgba(255,255,255,0.7); border-radius: 1.5em; box-shadow: 0 4px 24px -6px #A1653B33;" loading="lazy" />
+        <h1 class="mt-2 mb-0 fw-bold text-center" style="color: var(--brown); font-size: 2.5em; font-family: 'Poppins', 'Nunito', sans-serif;">Panutun Kasarasan</h1>
+        <div class="text-center mt-1" style="font-size: 1.18em; font-weight: 500; color: var(--terracotta); font-family: 'Quicksand', 'Poppins', 'Nunito', sans-serif; letter-spacing: 0.01em;">
+            Nuntun Waras, Ngraket Rasa
+            <span class="d-block" style="font-size: 0.82em; color: var(--brown); opacity:0.75;">Guiding Wellness, Strengthening Connection</span>
+        </div>
+        <div class="mt-4 px-2 text-center" style="color: var(--brown); max-width: 40em; line-height: 170%; font-size: 1.09em; background: rgba(240,231,217,0.82); padding: 1.1em 1.3em; border-radius: 16px; margin: 0 auto;">
+            Solusi terpadu kesehatan dan kebugaran berpadu kehangatan nilai Jawa. Jelajahi harmoni tubuh, pikiran, dan jiwa untuk hidup yang lebih bermakna.
+        </div>
+        <div class="d-flex flex-wrap gap-3 mt-4 justify-content-center w-100">
+            <a href="/login" class="btn gradient-btn shadow-soft" style="margin-right:1.5em; min-width:120px;">Login</a>
+            <a href="/about" class="btn gradient-btn-2 shadow-soft" style="min-width:140px;">Tentang Kami</a>
         </div>
     </div>
 </section>
 
-<!-- Rest of the code remains unchanged until the MCU package buttons -->
-
-<!-- MCU Packages Section -->
-<section class="container mb-5">
-    <h2 class="h3 mb-4">Available MCU Packages</h2>
-    <div class="row">
+<!-- MCU Packages Section (styled and aligned like new home) -->
+<section class="container mb-5 mt-5">
+    <h2 class="h3 mb-4 ms-2" style="color: var(--brown); font-family: 'Poppins', 'Nunito', sans-serif;">Available MCU Packages</h2>
+    <div class="row g-4">
         <!-- Basic Package -->
-        <div class="col-md-4 mb-4">
-            <div class="appointment-card">
-                <div class="feature-icon mb-3">
-                    <i class="fas fa-heartbeat" style="font-size: 48px; color: #dc3545;"></i>
+        <div class="col-md-4">
+            <div class="appointment-card p-4 rounded-md shadow-soft" style="background: var(--cream)">
+                <div class="feature-icon mb-3 text-center">
+                    <i class="fas fa-heartbeat" style="font-size: 40px; color: var(--terracotta);"></i>
                 </div>
-                <h4>Basic MCU</h4>
+                <h4 class="fw-bold" style="color: var(--brown)">Basic MCU</h4>
                 <p class="text-muted">Essential health assessments including blood pressure and basic blood tests.</p>
-                <ul class="list-unstyled text-muted">
+                <ul class="list-unstyled text-muted mb-3">
                     <li><i class="fas fa-check text-success me-2"></i>General physical examination</li>
                     <li><i class="fas fa-check text-success me-2"></i>Basic blood tests</li>
                     <li><i class="fas fa-check text-success me-2"></i>Blood pressure check</li>
                 </ul>
-                <div class="mt-4">
-                    <h5 class="mb-3">Rp 500.000</h5>
-                    <a href="{{ route('hospitals.selection') }}" class="btn btn-danger">Book Now</a>
+                <div class="mt-3">
+                    <h5 class="mb-3 fw-bold" style="color: var(--gold);">Rp 500.000</h5>
+                    <a href="{{ route('hospitals.selection') }}" class="btn gradient-btn-2 shadow-soft w-100">Book Now</a>
                 </div>
             </div>
         </div>
-
         <!-- Standard Package -->
-        <div class="col-md-4 mb-4">
-            <div class="appointment-card">
-                <div class="feature-icon mb-3">
-                    <i class="fas fa-stethoscope" style="font-size: 48px; color: #28a745;"></i>
+        <div class="col-md-4">
+            <div class="appointment-card p-4 rounded-md shadow-soft" style="background: var(--cream)">
+                <div class="feature-icon mb-3 text-center">
+                    <i class="fas fa-stethoscope" style="font-size: 40px; color: var(--green);"></i>
                 </div>
-                <h4>Standard MCU</h4>
+                <h4 class="fw-bold" style="color: var(--brown)">Standard MCU</h4>
                 <p class="text-muted">Comprehensive tests including cholesterol levels and EKG.</p>
-                <ul class="list-unstyled text-muted">
+                <ul class="list-unstyled text-muted mb-3">
                     <li><i class="fas fa-check text-success me-2"></i>All Basic package tests</li>
                     <li><i class="fas fa-check text-success me-2"></i>EKG examination</li>
                     <li><i class="fas fa-check text-success me-2"></i>Cholesterol panel</li>
                 </ul>
-                <div class="mt-4">
-                    <h5 class="mb-3">Rp 1.000.000</h5>
-                    <a href="{{ route('hospitals.selection') }}" class="btn btn-success">Book Now</a>
+                <div class="mt-3">
+                    <h5 class="mb-3 fw-bold" style="color: var(--gold);">Rp 1.000.000</h5>
+                    <a href="{{ route('hospitals.selection') }}" class="btn gradient-btn-2 shadow-soft w-100">Book Now</a>
                 </div>
             </div>
         </div>
-
         <!-- Premium Package -->
-        <div class="col-md-4 mb-4">
-            <div class="appointment-card">
-                <div class="feature-icon mb-3">
-                    <i class="fas fa-user-md" style="font-size: 48px; color: #007bff;"></i>
+        <div class="col-md-4">
+            <div class="appointment-card p-4 rounded-md shadow-soft" style="background: var(--cream)">
+                <div class="feature-icon mb-3 text-center">
+                    <i class="fas fa-user-md" style="font-size: 40px; color: var(--brown);"></i>
                 </div>
-                <h4>Premium MCU</h4>
+                <h4 class="fw-bold" style="color: var(--brown)">Premium MCU</h4>
                 <p class="text-muted">Advanced imaging tests and specialist consultations.</p>
-                <ul class="list-unstyled text-muted">
+                <ul class="list-unstyled text-muted mb-3">
                     <li><i class="fas fa-check text-success me-2"></i>All Standard package tests</li>
                     <li><i class="fas fa-check text-success me-2"></i>MRI/CT scan</li>
                     <li><i class="fas fa-check text-success me-2"></i>Specialist consultation</li>
                 </ul>
-                <div class="mt-4">
-                    <h5 class="mb-3">Rp 2.500.000</h5>
-                    <a href="{{ route('hospitals.selection') }}" class="btn btn-primary">Book Now</a>
+                <div class="mt-3">
+                    <h5 class="mb-3 fw-bold" style="color: var(--gold);">Rp 2.500.000</h5>
+                    <a href="{{ route('hospitals.selection') }}" class="btn gradient-btn-2 shadow-soft w-100">Book Now</a>
                 </div>
             </div>
         </div>
